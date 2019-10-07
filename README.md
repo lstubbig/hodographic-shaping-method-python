@@ -16,4 +16,4 @@ Example reproducing the trajectory of the Dawn mission and the corresponding thr
 </p>
 
 [1] D. Gondelach and R. Noomen, [Hodographic-shaping method for low-thrust interplanetary trajectory design](https://arc.aiaa.org/doi/abs/10.2514/1.A32991), Journal of Spacecraft and Rockets, 2015  
-[2] L. Stubbig, [Investigating the use of neural network surrogate models in the evolutionary optimization of interplanetary low-thrust trajectories](https://repository.tudelft.nl/islandora/search/Stubbig?collection=education), MSc Thesis, TU Delft, 2019
+[2] L. Stubbig, [Investigating the use of neural network surrogate models in the evolutionary optimization of interplanetary low-thrust trajectories](http://resolver.tudelft.nl/uuid:97481b94-dcd8-4f5d-bd95-e91f3146f69a), MSc Thesis, TU Delft, 2019
