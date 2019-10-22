@@ -1,3 +1,4 @@
 output/
 __pycache__/
 ephemerides/de430*
+.ipynb_checkpoints/

@@ -1,5 +1,4 @@
 import matplotlib as mlt
-mlt.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from collections import OrderedDict
@@ -193,7 +192,6 @@ class patchedPlots(object):
                     zorder=4)
 
         # formatting
-        # ax.set_aspect('equal')
         if scaling:
             ax.set_zlim(-2.3, 2.3)
         ax.set_xlabel('x [AU]', labelpad=15)
@@ -625,7 +623,6 @@ class patchedPlots(object):
         plt.ylabel(r'$f$ $[m/s^2]$')
         plt.xlim([self.tSamples[0], self.tSamples[-1]])
         plt.ticklabel_format(style='sci', axis='y', scilimits=(-4,-4))
-        # plt.ylim([-0.0004, 0.0005])
         plt.legend()
         plt.tight_layout()
 

@@ -44,7 +44,7 @@ class plotting(object):
                 self.sampleTrajectoryPosition(trajectory, samples=samples)
         self.traVelCart, self.traVelCyl = \
                 self.sampleTrajectoryVelocity(trajectory, samples=samples)
-        self.traAccCyl, self.traAccCart = \
+        self.traAccCyl = \
                 self.sampleTrajectoryAcceleration(trajectory, samples=samples)
 
     def trajectory3D(self, save=None, folder=None, scaling=True):
@@ -77,9 +77,8 @@ class plotting(object):
         ax.scatter(self.traPosCart['x'][-1]/pk.AU, self.traPosCart['y'][-1]/pk.AU, self.traPosCart['z'][-1]/pk.AU, label='arrival', c='C3')
 
         # formatting
-        ax.set_aspect('equal')
         if scaling:
-            ax.set_zlim(-1.5, 1.5)
+            axisEqual3D(ax)
 
         # plt.title('Orbits and trajectory')
         ax.set_xlabel('x [AU]', labelpad=15)
@@ -191,9 +190,8 @@ class plotting(object):
         ax.set_xlabel('x [AU]', labelpad=15)
         ax.set_ylabel('y [AU]', labelpad=15)
         ax.set_zlabel('z [AU]', labelpad=15)
-        ax.set_aspect('equal')
         # ax.set_zlim(-0.05, 0.05)
-        ax.set_zlim(-1.5, 1.5)
+        axisEqual3D(ax)
         plt.grid(True)
         # plt.title("Low-thrust trajectory")
 
@@ -335,40 +333,6 @@ class plotting(object):
             checkFolder(folder)
             plt.savefig(os.path.join(os.getcwd(), folder, 'thrust.pdf'), dpi=300)
             plt.savefig(os.path.join(os.getcwd(), folder, 'thrust.png'), dpi=300)
-        plt.show()
-
-    def thrustCart(self, save=None, folder=None):
-        """
-        Plot the thrust profile in Cartesian coordinates
-        """
-
-        print('Plot thrust (Cartesian)')
-
-        fig = plt.figure(figsize=(10, 5))
-
-        samplePoints = self.tSampleSec
-
-        # Cartesian accelerations
-        plot1 = plt.plot(self.tSample, self.traAccCart['ax'], ':', label=r'$f_x$')
-        plot1 = plt.plot(self.tSample, self.traAccCart['ay'], '--', label=r'$f_y$')
-        plot1 = plt.plot(self.tSample, self.traAccCart['az'], '-.', label=r'$f_z$')
-        plot1 = plt.plot(self.tSample, self.traAccCart['total'], '-', label=r'$f_{\mathrm{total}}$', alpha=0.5)
-        plt.grid()
-        plt.xlabel('time [mjd2000]')
-        plt.ylabel(r'$f$ $[m/s^2]$')
-        plt.xlim([self.tSample[0], self.tSample[-1]])
-        # plt.ylim([-0.0004, 0.0005])
-        plt.title('Thrust acceleration (Cartesian)')
-        plt.legend()
-
-        if save==None:
-            save = self.save
-        if folder==None:
-            folder = self.folder
-        if save==True:
-            checkFolder(folder)
-            plt.savefig(os.path.join(os.getcwd(), folder, 'thrustCart.pdf'), dpi=300)
-            plt.savefig(os.path.join(os.getcwd(), folder, 'thrustCart.png'), dpi=300)
         plt.show()
 
     def figure119(self, save=None, folder=None):
@@ -979,22 +943,12 @@ class plotting(object):
             rTraAcc[i] = aCyl[0]
             tTraAcc[i] = aCyl[1]
             zTraAcc[i] = aCyl[2]
-            rCart = [x[i], y[i], z[i]]
-            aCart = Acyl2Acart(aCyl, rCart)
-            xTraAcc[i] = aCart[0]
-            yTraAcc[i] = aCart[1]
-            totalTraAcc[i] = np.sqrt(xTraAcc[i]**2 + yTraAcc[i]**2 + zTraAcc[i]**2)
 
         # dictionaries
         trajectoryAccelerationsCyl = {'ar' : rTraAcc,
                                       'at' : tTraAcc,
                                       'az' : zTraAcc}
 
-        trajectoryAccelerationsCart = {'ax' : xTraAcc,
-                                       'ay' : yTraAcc,
-                                       'az' : zTraAcc,
-                                       'total' : totalTraAcc}
-
         print('Done sampling trajectory acceleration.')
 
-        return trajectoryAccelerationsCyl, trajectoryAccelerationsCart
+        return trajectoryAccelerationsCyl
