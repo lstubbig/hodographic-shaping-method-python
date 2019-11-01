@@ -1,7 +1,5 @@
 import numpy as np
 import scipy as sci
-# import numba
-# from numba import jit
 
 class shapeFunctions(object):
     """
