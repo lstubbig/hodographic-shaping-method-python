@@ -5,7 +5,7 @@ Documentation is provided in the shape of Jupyter Notebooks which show the core 
 ```pykep pygmo nlopt scipy numpy matplotlib```  
 In order to use high precision ephemeris data the NASA spice kernel [de430.bsp](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/) (114 Mb) needs to be copied into the 'ephemerides' folder. It includes the positions and velocities of the Sun, the planets, and the moon over a wide time span. The kernels for Vesta and Ceres are already included. Kernel files for other small bodies or dates can be retrieved from NASA's [Horizons system](https://ssd.jpl.nasa.gov/x/spk.html).
 
-The code is the result of my MSc thesis work at TU Delft [2], where I combined a Genetic Algorithm with a Neural Network surrogate model in order to improve the optimization of interplanetary, linked, low-thrust trajectories. If there is interest in the code for those surrogate assisted optimizations please let me know.
+The code is the result of my MSc thesis work at TU Delft [2], where I combined a Genetic Algorithm with a Neural Network surrogate model in order to improve the optimization of interplanetary, linked, low-thrust trajectories.
 
 Example reproducing the trajectory of the Dawn mission and the corresponding thrust acceleration profile. The spacecraft leaves Earth with an impulsive shot, performs a flyby at Mars, rendezvous at Vesta, stays for a while, and finally transfers to Ceres.
 <p align="center">
