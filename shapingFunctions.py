@@ -139,8 +139,8 @@ class shapeFunctionsFree(object):
                         - (a**2*t*np.pi*np.sin((a*t*np.pi)/2))/2
             self.Iv1 =	lambda t: (4*np.sin((a*t*np.pi)/2))/(a*np.pi**2)\
                         - (2*t*np.cos((a*t*np.pi)/2))/np.pi
-            self.Iv2 =	lambda t: (2*t*np.sin((a*t*np.pi)/2))/np.pi\
-                        - (8*np.sin((a*t*np.pi)/4)**2)/(a*np.pi**2)
+            self.Iv2 =	lambda t: (4*np.cos((a*t*np.pi)/2))/(a*np.pi**2)\
+                        + (2*t*np.sin((a*t*np.pi)/2))/np.pi
             self.funNum = 2
 
         elif self.shape == 'P4CosR5P4SinR5_scaled':
